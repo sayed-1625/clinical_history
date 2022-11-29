@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from django.contrib.auth.decorators import login_required
+from user.views import Login, logoutUsuario
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include ('home.urls')),
+    path('accounts/login/',Login.as_view(), name = 'login'),
+    path('usuarios/',include(('user.urls','usuarios'))),
+    path('logout/',login_required(logoutUsuario),name = 'logout'),
 ]

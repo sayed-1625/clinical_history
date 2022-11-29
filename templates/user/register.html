@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Tú Doctor en casa | {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+
+   </head>
+   
+<body>
+
+  {% block container %}
+  <div class="container">
+    <div class="title">Tú Doctor en casa</div>
+    <div class="title">Registro de usuario</div>
+    <div class="content">
+
+      <form method="post">
+
+        {% csrf_token %}
+
+        <div class="user-details">
+
+          <div class="input-box">
+            <div class="form-group">
+            <span class="details">Tipo de usuario: </span>
+
+            <input type="text" placeholder="Paciente">
+            
+            </div>
+          </div>
+          
+        </div>
+        
+        {{ form.as_p }}
+
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <div class="form-group">
+              <button class="btn btn-primary "type="submit">Guardar</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  {% endblock %}
+
+</body>
+</html>
